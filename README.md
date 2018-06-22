@@ -72,7 +72,8 @@ This is an auto-clicker bot used to trade players and items on FIFA Ultimate Tea
 ## Needs to be done, but won't be unless I pick the project back up
 
 - [ ] Don't save passwords in plain text
-- [ ] Have it create user_db.sqlite from scratch so we're not using mine
+- [ ] Have it create databases from scratch
+- [ ] Have it auto-generate blank `bot*.yml` if `Session(bot_number=*)` doesn't exist
 - [ ] Store all settings in database, instead of yaml files
 - [ ] Completely refactor to use [FUTapi](https://github.com/futapi/fut) instead of Selenium
   * The increased likelihood of being caught is worth the increased speed
