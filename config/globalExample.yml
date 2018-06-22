@@ -1,3 +1,9 @@
+/*
+Delays are primarily used to keep the auto-clicker (Selenium) running appropriately, 
+since some systems and internet connections will affect how quickly Selenium can accomplish things.
+
+You shouldn't need to change more than lag_multiplier. Increase it if you have slow internet connection or computer.
+*/
 delays:
   huge_max: 1200
   huge_min: 600
@@ -11,9 +17,9 @@ delays:
   small_max: 3
   small_min: 1
 notifications:
-  autoremote_device_names: YourPhoneName
+  autoremote_device_names: YourPhoneName # AutoRemote is an Android app for syncing notifications (and more) across devices
   autoremote_key: YourAutoremoteKey
-  autoremote_notifications: true
+  autoremote_notifications: false # Set true if you filled in the above
   desktop_notifications: true
-path_to_chromedriver_exe: '/../../chromedriver.exe'
+path_to_chromedriver_exe: '/../../chromedriver.exe' # Should look like "C:/....". be sure to have "chromedriver.exe" at the end
 use_database: true

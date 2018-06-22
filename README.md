@@ -56,7 +56,6 @@ This is an auto-clicker bot used to trade players and items on FIFA Ultimate Tea
 
 3. Rename `config\botExample.yml` to `bot1.yml`
     * Open it and input your user info at the bottom
-
 4. Rename `config\globalExample.yml` to `global.yml`
     * Input appropriate `path_to_chromedriver_exe`
     * Change other settings as needed
@@ -72,6 +71,7 @@ This is an auto-clicker bot used to trade players and items on FIFA Ultimate Tea
 ## Needs to be done, but won't be unless I pick the project back up
 
 - [ ] Don't save passwords in plain text
+- [ ] Store all settings in database, instead of yaml files
 - [ ] Completely refactor to use [FUTapi](https://github.com/futapi/fut) instead of Selenium
   * The increased likelihood of being caught is worth the increased speed
 - [ ] Write unit tests

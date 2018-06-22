@@ -16,6 +16,7 @@ error.*
 *.pdf
 *.log
 
-# Ignore pyCharm files
+# Ignore IDE files
 __pycache__/
 /.idea/
+/.vscode/

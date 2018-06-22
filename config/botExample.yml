@@ -1,205 +1,89 @@
 ---
-bin_settings:
-    0000to0001:
-        buy_percent: 0.8
-        sell_percent: 0.98
-        spread: 100
+bin_settings: # Buy It Now Settings
+    0000to0001: # Do not change. These represent price of 0 to 1000, etc
+        buy_percent: 0.8 # Buy if item is Price * buy_percent or lower
+        sell_percent: 0.95 # Sell for price * sell_percent
+        spread: 100 # Minimum price is sell_price - spread
     0001to0005:
         buy_percent: 0.8
         sell_percent: 0.98
         spread: 100
     0005to0010:
-        buy_percent: 0.8
+        buy_percent: 0.85
         sell_percent: 0.98
         spread: 200
     0010to0030:
-        buy_percent: 0.85
+        buy_percent: 0.87
         sell_percent: 0.98
         spread: 500
     0030to0050:
-        buy_percent: 0.85
+        buy_percent: 0.88
         sell_percent: 0.99
         spread: 1500
     0050to0100:
-        buy_percent: 0.85
+        buy_percent: 0.88
         sell_percent: 1
         spread: 3000
     0100to0250:
-        buy_percent: 0.85
-        sell_percent: 1
+        buy_percent: 0.9
+        sell_percent: 1.01
         spread: 7000
     0250to0500:
-        buy_percent: 0.85
-        sell_percent: 1
+        buy_percent: 0.92
+        sell_percent: 1.01
         spread: 20000
     0500to2000:
-        buy_percent: 0.85
-        sell_percent: 1
+        buy_percent: 0.93
+        sell_percent: 1.01
         spread: 50000
     2000plus:
         buy_percent: 0.5
-        sell_percent: 1
+        sell_percent: 1.01
         spread: 50000
-    dynamic_profit: true
-    dynamic_profit_after1: 45
-    dynamic_profit_after2: 48
-    dynamic_profit_steps: 0.05
+    dynamic_profit: true # Changes buy_percent depending on number of cards in your transfer list
+    dynamic_profit_after1: 65 # Number of cards in transfer list before buy_percent increases by dynamic_profit_steps
+    dynamic_profit_after2: 68 # Second number of cards in transfer list to increase again
+    dynamic_profit_steps: 0.05 # Amount to increase
 settings:
-    pause_after_successful_snipe: 30
-    pause_after_unsuccessful_snipe: 15
-    requests_per_minute: 5
-    sleep_after_running_for_x_minutes: 25
-    sleep_average: 45
-    sleep_spread: 5
-    sell_unassigned: true
-    night_mode:
+    pause_after_successful_snipe: 20 # In seconds
+    pause_after_unsuccessful_snipe: 10 # In seconds
+    requests_per_minute: 7 # Keep around 7 so you don't get caught
+    sleep_after_running_for_x_minutes: 35 # Must have rest periods so you don't get caught
+    sleep_average: 20 # In minutes
+    sleep_spread: 5 # Randomizes so you look more human. If sleep_average is 20 and spread is 5, will sleep between 15 and 25 minutes
+    sell_unassigned: true # Auto-sell items in unassigned pile
+    night_mode: # Sleep at night
         enabled: true
-        start_hour: 21
+        start_hour: 21 # 24-hour based on system time
         end_hour: 8
-        relist_for: 12 Hours
-        wait_for_enter: true
-        last_sleep: 2018-04-16 21:04:46.614325
-        need_relist: false
-        relist_at_market_for_day_mode: true
-snipe_filters:
-    cagliari:
-        club: Cagliari
-        price_check:
-        - '205659' # Alessio Cragno
-        - '213328' # Senna Miangue
-        - '189485' # Diego Farias
-        - '224232' # Nicolo Barella
-        - '201529' # Marco Capuano
-        - '211394' # Paolo Pancrazio Farago
-        - '220671' # Federico Melchiorri
-        - '102056' # Simone Padoin
-        quality: Silver
-        search_type: Players
-    kardemir:
-        club: Karabükspor
-        price_check:
-        - '237476' # Andriy Bliznichenko
-        - '223424' # Ilhan Depe
-        - '192616' # Cristian Tanase
-        - '143655' # Kerim Zengin
-        - '162814' # Hakan Aslantas
-        - '155463' # Valerica Gaman
-        - '201326' # Gabriel Torje
-        - '220177' # Gheorghe Grozav
-        - '144396' # Ahmet Sahin
-        quality: Silver
-        search_type: Players
-    aston:
-        club: Aston Villa
-        price_check:
-        - '192317' # Jed Steer
-        - '215374' # Scott Hogan
-        - '206075' # Sam Johnstone
-        - '46590' # Christopher Samba
-        - '162054' # Mark Bunn
-        - '216485' # Aaron Tshibola
-        - '180635' # Tommy Elphick
-        - '206517' # Jack Grealish
-        - '169721' # Micah Richards
-        quality: Silver
-        search_type: Players
-    crotone_silver:
-        club: Crotone
-        price_check:
-        - '158887'
-        - '192816'
-        - '201530'
-        - '149258'
-        - '203458'
-        - '210964'
-        - '219496'
-        - '204166'
-        - '219594'
-        - '219591'
-        - '207553'
-        - '195272'
-        - '225439'
-        quality: Silver
-        search_type: Players
-    atalanta:
-        club: Atalanta
-        price_check:
-        - '217196' # Jose Luis Palomino
-        - '208268' # Bryan Cristante
-        - '211515' # Pierluigi Gollini
-        - '223697' # Robin Gosens
-        - '220093' # Hans Hateboer
-        - '222501' # Timothy Castagne
-        - '210533' # Joao Schmidt
-        quality: Silver
-        search_type: Players
-    france_icons:
-        search_type: Players
-        nation: France
-        league: Icons
-        quality: Special
-        price_check:
-        - '238443' # Laurent Blanc
-        - '1116' # Marcel Desailly
-        - '238415' # Emmanuel Petit
-        - '239069' # Robert Pires
-        - '239070' # Robert Pires
-        - '1605' # Robert Pires
-        - '237062' # Thierry Henry
-        - '222481' # Laurent Blanc
-        - '239525' # Marcel Desailly
-        - '239526' # Marcel Desailly
-        - '238414' # Emmanuel Petit
-        - '238444' # Laurent Blanc
-        - '238426' # Patrick Vieira
-        - '1620' # Emmanuel Petit
-        - '237069' # Thierry Henry
-        - '1419' # Patrick Vieira
-        - '238427' # Patrick Vieira
-        - '1625' # Thierry Henry
-    brazil_ligue:
-        search_type: Players
-        nation: Brazil
-        league: Ligue 1
-        quality: Special
-        include:
-        - '180334' # Marcelo
-        - '50516869' # Luiz Gustavo
-        - '50490273' # Dante
-        - '185221' # Luiz Gustavo
-        - '207865' # Marquinhos
-        - '50539355' # Marcal
-        - '50484908' # Hilton
-        - '50478178' # Dani Alves
-        - '67262124' # Hilton
-        - '67255394' #
-        - '67299735' # Neymar
-        - '84076951' # Neymar
-        - '117631383' #
-        - '190871' # Neymar
+        relist_for: 12 Hours # Use exact string in dropdown in web app
+        wait_for_enter: true # Don't resume until user hits enter
+        last_sleep: 2018-04-16 21:00:10.887604 # Keeps track to prevent re-sleeping
+        need_relist: false # Keeps track to see if we relisted all items for "1 Hour" after waking from sleep
+        relist_at_market_for_day_mode: true # Relists at the market rate when day mode resumes
 strategy_settings:
     acquire:
         hunt:
             max_time_left: 300
             min_time_left: 60
-            use_max_buy: true
+            use_max_buy: true # Bids at highest price it can if true. Bids at lowest if false
         snipe:
-            max_results: 15
-            max_tries: 15
+            max_results: 15 # If more than this, it indicates something went wrong with the search and will break so you don't lose money bidding on items due to a bad search
+            max_tries: 5
     amass:
-        fight: false
-        max_futbin_update: 28800
-        max_time_left: 600
-        min_profit: 200
+        fight: false # If true, goes to watch list and fights for bids up until your max price
+        max_futbin_update: 28800 # Minimum time, in seconds, since futbin last updated their price. Prevents buying cards that recently changed a lot in price
+        max_time_left: 420 # In seconds, of the auction
+        min_profit: 300
         min_time_left: 60
-        players:
-        - '207566' # William Carvalho
-        - '184144' # Nicolas Gaitan
-        - '177683' # Yann Sommer
-        - '178562' # Ever Banega
-        - '215316' # Geronimo Rulli
-        - '191180' # Javier Pastore
-        use_buy_percent: false
+        players: # EA ID of players. Can also be Resource ID
+        - '156519' # Hector Herrera
+        - '173432' # Hector Moreno
+        - '205407' # Daniele Baselli
+        - '210406' # Piotr Zielinski
+        - '210514' # Joao Cancelo
+        - '199914' # Allan
+        use_buy_percent: false # Uses buy_percent from bin_settings if true, otherwise, uses min_profit
         use_max_buy: true
     arbitrage:
         max_futbin_update: 86400
@@ -242,109 +126,61 @@ strategy_settings:
         - '7763'
         - '165239'
         - '191687'
-        - '210896'
-        - '195086'
-        - '202371'
-        - '192638'
-        - '203747'
-        - '208830'
-        - '52091'
-        - '216451'
-        - '178509'
-        - '207410'
-        - '186561'
-        - '213331'
-        - '202477'
-        - '171919'
-        - '179847'
-        - '108080'
-        - '163631'
-        - '200888'
-        - '208448'
-        - '139869'
-        - '177683'
-        - '178005'
-        - '146748'
-        - '192366'
-        - '179784'
-        - '5479'
-        - '189358'
-        - '189117'
-        - '201399'
-        - '192227'
-        - '218667'
-        - '167397'
-        - '106231'
-        - '180930'
-        - '178750'
-        - '164468'
-        - '179783'
-        - '192563'
-        - '192448'
-        - '193041'
-        - '137186'
-        - '192593'
-        - '208418'
-        - '190547'
-        - '198219'
-        - '167628'
         use_buy_percent: true
     bpm:
-        adjust_for_weekend_league: false
-        club_types:
+        adjust_for_weekend_league: false # Sell at higher prices while Weekend League is running
+        club_types: # Which types of cards to send to club
         - staff
         - contract
         - fitness
         - healing
         - training
         - gk_training
-        keep_squad_fitness: true
-        min_sell_types: []
-        quick_sell_types:
+        keep_squad_fitness: false
+        min_sell_types: # Which card types to sell for minimum (200)
+        - 
+        quick_sell_types: # Card types to quick sell
         - ball
         - kit
         - badge
         - stadium
-    consumable_amass:
-        fight: false
-        filters:
-        - {item: Chemistry Styles, chem_style: Hunter, max_buy: 4000, sell_price: 4500}
-        max_time_left: 120
-        min_profit: 400
-        min_time_left: 60
-        use_buy_percent: false
-        use_max_buy: false
-        max_futbin_update: 21600
     filter_finder:
-        include_zeroes: true
-        min_players: 3
-        min_price: 800
-    filter_amass:
-        fight: false
-        filters:
-        max_time_left: 120
-        max_price: 5000
-        min_profit: 400
-        min_time_left: 60
-        use_buy_percent: false
-        use_max_buy: false
-        max_futbin_update: 21600
+        include_zeroes: false # If false, ignores players with 0 value on futbin (due to their errors or new or SBC cards)
+        min_players: 10
+        min_price: 1000
     filter_snipe:
         filters:
-        - {league: Bundesliga, quality: Gold, position: CB, nation: Germany}
-        - {club: Kawasaki Frontale, nation: Japan}
-        - {club: Borussia Dortmund}
+        - {position: CB, quality: gold, league: Süper Lig}
+        - {quality: Gold, club: Borussia Mönchengladbach}
+        - {quality: Gold, club: Beşiktaş JK}
+        - {quality: Gold, club: FC Schalke 04}
+        - {quality: Gold, club: Galatasaray SK}
+        - {quality: Gold, nation: France, league: LaLiga Santander}
+        - {quality: Silver, position: CB, nation: Germany, league: Bundesliga}
         max_item_buys: 100
         max_price: 999999999
         max_results: 15
         max_tries: 30
         use_buy_percent: true
+    filter_amass:
+        fight: false
+        filters:
+        - {quality: Silver, club: Gamba Osaka}
+        - {quality: Silver, club: Udinese}
+        - {quality: Special, position: GK, league: Calcio A}
+        - {quality: Special, nation: Germany, league: Premier League}
+        max_time_left: 120
+        max_price: 9999999
+        min_profit: 350
+        min_time_left: 60
+        use_buy_percent: false
+        use_max_buy: true
+        max_futbin_update: 21600
     futbin_cheapest_sbc:
         fight: false
         max_futbin_update: 28800
         max_item_bids: 15
-        max_price: 150000
-        max_prp: 70
+        max_price: 10000
         max_time_left: 360
         min_price: 1000
         min_profit: 150
@@ -359,7 +195,6 @@ strategy_settings:
         max_futbin_update: 28800
         max_item_buys: 3
         max_price: 3000
-        max_prp: 70
         max_results: 5
         max_tries: 10
         min_price: 1000
@@ -373,93 +208,102 @@ strategy_settings:
         - '85'
         use_buy_percent: true
     hunt:
-        fight: false
+        fight: true
         max_futbin_update: 28800
-        max_item_bids: 5
-        max_price: 200000
+        max_item_bids: 2
+        max_price: 20000
         max_time_left: 480
-        min_price: 1000
+        min_price: 15000
         min_profit: 200
         min_time_left: 300
-        players:
-        - '164240'
-        - '167664'
-        - '1179'
-        - '182493'
+        players: []
         use_buy_percent: true
-        use_max_buy: true
+        use_max_buy: false
     market_monitor:
         max_results: 10
-        min_results: 5
+        min_results: 2
         players:
-        - '189242' # Coutinho
-        - '179844' # Diego Costa
-        - '184087' # Toby Alderweireld
-        - '189242' # Coutinho
-        - '168609' # Miranda
-        - '48940' # Petr Cech
-        - '162895' # Cesc Fabregas
-        - '165153' # Karim Benzema
-        - '172879' # Sokratis
-        - '175943' # Dries Mertens
-        - '179844' # Diego Costa
-        - '197781' # Isco
-        - '120533' # Pepe
-        - '156616' # Franck Ribery
+        - '167905'
+        - '189332'
+        - '184432'
+        - '188377'
+        - '225508'
+        - '201535'
+        - '208722'
+        - '170890'
+        - '186942'
+        - '211117'
+        - '173210'
+        - '200145'
+        - '164169'
+        - '137186'
+        - '180206'
+        - '172871'
+        - '192883'
+        - '193041'
+        - '192448'
+        - '183898'
+        - '198219'
+        - '192593'
+        - '208418'
+        - '139720'
+        - '167628'
+        - '192563'
+        - '190547'
+        - '231443'
+        - '203376'
+        - '165229'
     price_fix:
         hunt:
-            max_time_left: 300
+            max_time_left: 120
             min_time_left: 30
-            use_max_buy: true
-        min_profit: 400
+            use_max_buy: false
+        min_profit: 350
         players:
             1:
-                asset_id: '208618'
-                sell_price: 1500
-            2:
-                asset_id: '201042'
-                sell_price: 1300
+                asset_id: '137809' # Vagner Love
+                sell_price: 1400
         snipe:
             max_results: 15
             max_tries: 20
         use_buy_percent: false
     relist_individually:
-        above_bin: true
+        above_bin: false
         below_bin: false
     sbc_hunt:
         fight: false
         max_futbin_update: 21600
         max_item_bids: 5
         max_iterations: 2
+        max_players: 10
         max_price: 5000
-        max_prp: 70
         max_time_left: 420
-        min_price: 3000
-        min_profit: 200
+        min_price: 500
+        min_profit: 300
         min_time_left: 45
-        only_new: false
+        only_new: true
         players: []
         refresh_players: true
-        solutions_per_challenge: 3
-        use_buy_percent: true
-        use_max_buy: true
+        solutions_per_challenge: 2
+        use_buy_percent: false
+        use_max_buy: false
     silver_flip:
         fight: false
         market_monitor:
-            iterations: 1
+            iterations: 2
             leagues:
             - Calcio A
             max_time_left: 180
-            refresh: true
-        max_futbin_update: 3600
+            refresh: false
+        max_futbin_update: 1800
         max_item_bids: 10
         max_price: 5000
         max_results: 5
         max_time_left: 300
         min_price: 750
-        min_profit: 250
+        min_profit: 300
         min_time_left: 60
-        players: []
+        players: {}
         use_buy_percent: false
         use_max_buy: true
     snipe:
@@ -470,10 +314,9 @@ strategy_settings:
         max_tries: 50
         min_price: 500
         players:
-        - '202126' # Harry Kane
-        - '168651' # Ivan Rakitic
-        - '188350' # Marco Reus
-        - '152729' # Pique
+        - '211575' # Andre Gomes
+        - '204525' # Inigo Martinez
+        - '208618' # Lucas Vazquez
         rotate: false
         use_buy_percent: true
 user:
