@@ -1,9 +1,10 @@
 # Ignore personal info
 config/*
 
-# Don't ignore examples
+# Don't ignore examples or config readme
 !config/botExample.yml
 !config/globalExample.yml
+!config/README.md
 !runExample.py
 
 # Ignore user-generated files
