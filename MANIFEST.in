@@ -1,3 +1,0 @@
-graft FUTpuppeteer/templates
-graft FUTpuppeteer/static
-include FUTpuppeteer/schema.sql

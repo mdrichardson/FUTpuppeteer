@@ -8,7 +8,6 @@ config/*
 !runExample.py
 
 # Ignore user-generated files
-user_db.sqlite
 /logs/
 /tests/
 /*.py

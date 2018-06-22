@@ -5,7 +5,7 @@ Read the comments in botExample to see what each variable controls. If there isn
 
 **Be sure to input your settings at the bottom**
 
-# Global.yml
+# global.yml
 
 This stores global settings that affect all of your bots.
 Read the comments to understand variables.
