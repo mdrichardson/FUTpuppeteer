@@ -1,3 +1,5 @@
+#FUTpuppeteer/extensions
+
 These are chrome extensions that are loaded on startup of the bot. You can disable this with `Session(disable_extensions=False)`
 
 **futbin.crx** is futbin's chrome extension, which is used to upload your squad into futbin.
