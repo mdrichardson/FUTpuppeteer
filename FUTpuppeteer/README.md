@@ -4,7 +4,7 @@ This is where the core FUTpuppeteer files are stored. Read the comments in each 
 
 ## core.py
 
-Stores the `Session` class and all functions that are meant to be called by the user.
+Stores the `Session()` class and all functions that are meant to be called by the user.
 
 ## All other .py files
 
@@ -12,4 +12,4 @@ All other .py files in this directory are meant to be left alone. You can read t
 
 ## Strategies
 
-The .py files within the `Strategies` directory are also not meant to be called. Each file contains the code used to run each different strategy. See the `README.md` within that folder for an explanation of strategies.
+The .py files within the `strategies` directory are also not meant to be called. Each file contains the code used to run each different strategy. See the `README.md` within that folder for an explanation of strategies.
