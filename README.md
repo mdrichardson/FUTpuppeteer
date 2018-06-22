@@ -24,7 +24,7 @@ This is an auto-clicker bot used to trade players and items on FIFA Ultimate Tea
 
 ## Limitations
 
-* Stores your password on your in plain text. Watch out!
+* Stores your password on your machine in plain text. Watch out!
 * Uses Selenium. This is slower than using requests, but significantly harder to get caught. This can also cause issues on slow machines and/or connections. 
   * Try changing `lag_multiplier` in `global.yml` to something larger if your comupter or connection are slow.
 * FUT web app does not differentiate well between similar cards of the same player (e.g. Gold Diego Costa with a club change). 
