@@ -16,7 +16,8 @@ error.*
 *.pdf
 *.log
 
-# Ignore IDE files
+# Ignore unnecessary files
 __pycache__/
 /.idea/
 /.vscode/
+FUTpuppeteer/strategies/test.py
