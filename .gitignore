@@ -4,6 +4,7 @@ config/*
 # Don't ignore examples
 !config/botExample.yml
 !config/globalExample.yml
+!runExample.py
 
 # Ignore user-generated files
 user_db.sqlite
