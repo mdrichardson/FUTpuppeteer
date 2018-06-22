@@ -71,6 +71,7 @@ This is an auto-clicker bot used to trade players and items on FIFA Ultimate Tea
 
 ## Needs to be done, but won't be unless I pick the project back up
 
+- [ ] Make install easier
 - [ ] Don't save passwords in plain text
 - [ ] Have it create databases from scratch
 - [ ] Have it auto-generate blank `bot*.yml` if `Session(bot_number=*)` doesn't exist
