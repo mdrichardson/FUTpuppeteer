@@ -1,0 +1,19 @@
+delays:
+  huge_max: 1200
+  huge_min: 600
+  lag_multiplier: 1
+  large_max: 30
+  large_min: 15
+  med_max: 10
+  med_min: 7
+  micro_max: 1
+  micro_min: 0.5
+  small_max: 3
+  small_min: 1
+notifications:
+  autoremote_device_names: YourPhoneName
+  autoremote_key: YourAutoremoteKey
+  autoremote_notifications: true
+  desktop_notifications: true
+path_to_chromedriver_exe: '/../../chromedriver.exe'
+use_database: true

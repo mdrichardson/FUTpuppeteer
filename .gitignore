@@ -1,0 +1,20 @@
+# Ignore personal info
+config/*
+
+# Don't ignore examples
+!config/botExample.yml
+!config/globalExample.yml
+
+# Ignore user-generated files
+user_db.sqlite
+/logs/
+/tests/
+/*.py
+error.*
+*.xlsx
+*.pdf
+*.log
+
+# Ignore pyCharm files
+__pycache__/
+/.idea/
