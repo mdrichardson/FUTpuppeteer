@@ -55,13 +55,13 @@ This is an auto-clicker bot used to trade players and items on FIFA Ultimate Tea
 2. Pull or clone this repo
 
 3. Rename `config\botExample.yml` to `bot1.yml`
-        * Open it and input your user info at the bottom
+    * Open it and input your user info at the bottom
 
 4. Rename `config\globalExample.yml` to `global.yml`
-        * Input appropriate `path_to_chromedriver_exe`
-        * Change other settings as needed
+    * Input appropriate `path_to_chromedriver_exe`
+    * Change other settings as needed
 5. Edit `RunExample.py` to your liking
-        * There's a lot of examples in there. Comment in what you want to run and comment out what you don't. Read the code and change as necessary
+    * There's a lot of examples in there. Comment in what you want to run and comment out what you don't. Read the code and change as necessary
 
 ## To-Do
 
