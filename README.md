@@ -65,6 +65,7 @@ This is an auto-clicker bot used to trade players and items on FIFA Ultimate Tea
 ## To-Do
 
 - [X] Add readmes to each folder
+- [ ] Add gif that shows bot operate
 - [ ] Clean up code, refactor as necessary
 - [ ] Test
 
