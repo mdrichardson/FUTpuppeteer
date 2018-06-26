@@ -320,13 +320,12 @@ strategy_settings:
         rotate: false
         use_buy_percent: true
 user:
-    email: example@example.com
-    login_to_futbin: true
-    password: EApassword
-    secret_answer: EAsecretAnswer
-    imap_email: example@example.com
-    imap_password: emailPassword
-    imap_server: emailServer
+    email: # example@example.com
+    login_to_futbin: true # If you want you bot to log into futbin when there are functions that open futbin.com
+    imap_email: # example@example.com
+    imap_server: # imap.gmail.com
+    re-enter_user_settings: true # Set to true if you need to add or reset passwords
+    secure_passwords: true # Set to false if you don't want to enter a master password every time
 pid:
 - 15432
 coin_transfer:

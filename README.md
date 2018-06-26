@@ -12,23 +12,28 @@ This is an auto-clicker bot used to trade players and items on FIFA Ultimate Tea
 * Can automatically manage transfer, watch, and unassigned lists
 * Contains *numerous* strategies that can be customized easily
 * Desktop and AutoRemote (Android app) notifications
+* Stealth:  
+  * Uses randomized delays and off-center clicking to mimic human interactions
+  * Uses randomized keep-alive
+  * Customizeable maximum rate of user server requests
+  * You can compile chromedriver yourself [here](https://chromium.googlesource.com/chromium/src/+/master/docs/windows_build_instructions.md) and change `key` in `call_function.js` to something random, [as seen here](https://stackoverflow.com/a/41220267/7729352)
 
 ## Technical Features
 
-* Contains rate limiting and keep-alive function so that it can run continuously without getting "caught"
 * Notifications for captcha, buy, sell, etc
 * Fairly verbose logging and console output
 * Price checks with Futbin or Futhead
 * Saves price data and user buy/sell data in sqlite database
 * IMAP support: can auto-login with 2-factor email authentication
+* Passwords are saved locally using OS's credential manager. They can optionally be encrypted with a master password
 
 ## Limitations
 
-* Stores your password on your machine in plain text. Watch out!
-* Uses Selenium. This is slower than using requests, but significantly harder to get caught. This can also cause issues on slow machines and/or connections. 
-  * Try changing `lag_multiplier` in `global.yml` to something larger if your comupter or connection are slow.
-* FUT web app does not differentiate well between similar cards of the same player (e.g. Gold Diego Costa with a club change). 
-  * In order to accurately get the price, all player card possibilities are grabbed from EA database. Cards in web app are then compared with those in database and closest match is returned. This is slightly slow.
+* Runs on Selenium to mimic human interactions for better stealth. This requires higher CPU and RAM usage as well as additional delays due to page load times that you wouldn't see with something that uses EA's API directly.  
+  * Try changing `lag_multiplier` in `global.yml` to something larger if you get errors because your comupter or connection are slow.
+* FUT web app doesn't differentiate well between similar cards of the same player (e.g. Gold Diego Costa with a club change).
+  * In order to accurately get the price of the right card, all player card possibilities are grabbed from EA database and stored locally. Cards that appear in web app searches are then compared with those in the database and the closest match is returned. This is slightly slow and you will requently be out-sniped by API-only bots.  
+  * When FIFA was first released, this wasn't an issue. But as more and more new card variations were released, this was the only way to solve this issue without direct API calls (which are less stealthy).
 * EA database must be manually updated. It takes ~10 minutes to complete. You can update it manually by executing `update_player_data()` in `database.py`.
 
 ## Installation
@@ -41,6 +46,7 @@ This is an auto-clicker bot used to trade players and items on FIFA Ultimate Tea
   * selenium
   * ruamel.YAML
   * signal
+  * simple-crypt
   * requests
   * sqlite3
   * ast
@@ -72,10 +78,9 @@ This is an auto-clicker bot used to trade players and items on FIFA Ultimate Tea
 ## Needs to be done, but won't be unless I pick the project back up
 
 - [ ] Make install easier
-- [ ] Don't save passwords in plain text
 - [ ] Have it create databases from scratch
 - [ ] Have it auto-generate blank `bot*.yml` if `Session(bot_number=*)` doesn't exist
 - [ ] Store all settings in database, instead of yaml files
 - [ ] Completely refactor to use [oczkers' FUT api wrapper](https://github.com/futapi/fut) instead of Selenium
-  * The increased likelihood of being caught is worth the increased speed
+  * The increased likelihood of being caught is worth the increased speed, unless web app security increases significantly in the future
 - [ ] Write unit tests

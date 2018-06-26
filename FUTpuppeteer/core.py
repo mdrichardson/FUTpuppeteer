@@ -27,7 +27,9 @@ from datetime import datetime, timedelta
 from ruamel.yaml import YAML
 import psutil
 import signal
-
+import keyring
+from simplecrypt import encrypt, decrypt
+from binascii import hexlify, unhexlify
 
 yaml = YAML()
 yaml.explicit_start = True
@@ -84,6 +86,7 @@ class Session(object):
                 user_prefs.write(prefs_change)
         except FileNotFoundError:
             pass
+        # Load appropriate config file
         if not config_file:
             config_file = 'bot{}.yml'.format(bot_number)
         if 'config/' not in config_file:
@@ -91,13 +94,20 @@ class Session(object):
         if '' not in config_file:
             config_file = '' + config_file
         self.config_file = config_file
+        info.set_config_variables(self)
+        # Check for user account settings. Get them, if they don't exist
+        # noinspection PyUnresolvedReferences
+        self.__get_user_info__()
+        if not self.user.get('password') or self.user['re-enter_user_settings']:
+            self.__save_user_info__()
+            info.set_config_variables(self)
+            self.__get_user_info__()
         if debug:
             log.setLevel(logging.DEBUG)
         else:
             log.setLevel(logging.INFO)
         self.proxy = proxy
         # Load bot settings
-        info.set_config_variables(self)
         # Prep for multiple instances
         try:
             self.grid_path = '/'.join(Global.path_to_chromedriver_exe.split('/')[:-1])
@@ -159,6 +169,85 @@ class Session(object):
             new_config['pid'] = self.pid
         with open(self.config_file, 'w') as update:
             yaml.dump(new_config, update)
+
+    #############################
+    #       GET AND STORE USER INFO
+    #############################
+    def __save_user_info__(self):
+        # Load current config
+        with open(self.config_file) as config:
+            new_config = yaml.load(config)
+        print('This bot needs to collect your user information. '
+              'You can choose how securely to store your passwords')
+        print('1. SECURE - Passwords are encrypted, but a master password must be entered every time the bot starts')
+        print('2. SEMI-SECURE - Passwords are stored in your OS\'s credential manager. Any program run under your OS user account can access them, '
+              'but you only ever have to enter them once.')
+        while True:
+            security = input('Choose 1 for SECURE or 2 for SEMI-SECURE: ')
+            if str(security) == '1' or str(security) == '2':
+                break
+            else:
+                print(security + ' was not an option. Please choose 1 for SECURE or 2 for SEMI-SECURE')
+        # Only ask for necessary information. Ask for passwords and secrets, regardless. Replace input() with getpass() if you want to hide the input
+        if not self.user['email']:
+            ea_email = input('EA Email address: ')
+            new_config['user']['email'] = ea_email
+        ea_password = input('EA Password: ')
+        ea_secret = input('EA secret: ')
+        print('Do you want to use IMAP? This allows the bot to auto-enter your emailed 2-factor authentication code')
+        while True:
+            imap_choice = input('Y/N: ')
+            if imap_choice.lower() == 'y':
+                if not self.user['imap_email']:
+                    imap_email = input('YOUR Email Address: ')
+                    new_config['user']['imap_email'] = imap_email
+                imap_password = input('YOUR Email Password: ')
+                if not self.user['imap_server']:
+                    imap_server = input('IMAP Server (imap.gmail.com for gmail): ')
+                    new_config['user']['imap_server'] = imap_server
+                break
+            else:
+                print(imap_choice + ' was not an option. Please choose Y to use IMAP or N to not use IMAP')
+        if str(security) == '1':
+            # Ask for master password and encrypt passwords
+            print('Set a master password. It cannot be equal to any of your passwords or secrets. DON\'T FORGET IT')
+            while True:
+                master_password = input('Set Master Password: ')
+                if master_password not in [ea_password, ea_secret, imap_password]:
+                    break
+                else:
+                    print('Your master password CANNOT be the same as your EA Password, EA Secret, or IMAP Password')
+            # We have to encode->hexlify->decode because encrypt creates bytes and keyring stores non-utf-8 string and we'll need to be able to convert later
+            imap_password = hexlify(encrypt(master_password, imap_password.encode('utf-8'))).decode()
+            ea_password = hexlify(encrypt(master_password, ea_password.encode('utf-8'))).decode()
+            ea_secret = hexlify(encrypt(master_password, ea_secret.encode('utf-8'))).decode()
+        # Store passwords and secrets in the keyring
+        keyring.set_password('FUTpuppeteer_{}'.format(self.bot_number), 'imap_password', imap_password)
+        keyring.set_password('FUTpuppeteer_{}'.format(self.bot_number), 'ea_password', ea_password)
+        keyring.set_password('FUTpuppeteer_{}'.format(self.bot_number), 'ea_secret', ea_secret)
+        new_config['user']['secure_passwords'] = True
+    # Write user info to config. Add option to re-enter user settings if needed
+        new_config['user']['re-enter_user_settings'] = False
+        with open(self.config_file, 'w') as update:
+            yaml.dump(new_config, update)
+
+    def __get_user_info__(self):
+        if self.user.get('password', None) or not self.user['re-enter_user_settings']:
+            # Get the info from OS credential manager
+            ea_password = keyring.get_password('FUTpuppeteer_{}'.format(self.bot_number), 'ea_password')
+            ea_secret = keyring.get_password('FUTpuppeteer_{}'.format(self.bot_number), 'ea_secret')
+            imap_password = keyring.get_password('FUTpuppeteer_{}'.format(self.bot_number), 'imap_password')
+            # Decrypt if they're encrypted
+            if self.user['secure_passwords']:
+                master_password = input('Enter Master Password: ')
+                # We have to encode->unhexlify->decode because decrypt requires bytes and keyring uses string
+                ea_password = decrypt(master_password, unhexlify(ea_password.encode())).decode('utf-8')
+                ea_secret = decrypt(master_password, unhexlify(ea_secret.encode())).decode('utf-8')
+                imap_password = decrypt(master_password, unhexlify(imap_password.encode())).decode('utf-8')
+            # Store them in the Session Object so we can use them
+            self.user['password'] = ea_password
+            self.user['secret_answer'] = ea_secret
+            self.user['imap_password'] = imap_password
 
     #############################
     #       LOGIN
