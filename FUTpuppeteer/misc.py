@@ -83,7 +83,7 @@ class Colors:
 
 
 log = logging.getLogger('logging')
-log_file_handler = RotatingFileHandler('logs/FUTpuppeteer.log', mode='a', maxBytes=5*1024*1024, encoding=None, delay=0)
+log_file_handler = RotatingFileHandler('logs/FUTpuppeteer.log', mode='a', maxBytes=5*1024*1024, encoding='utf-8', delay=0)
 log.addHandler(log_file_handler)
 log_file_handler.setFormatter(logging.Formatter('%(asctime)s %(levelname)s %(message)s'))
 
