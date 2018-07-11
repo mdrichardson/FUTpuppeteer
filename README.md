@@ -4,6 +4,7 @@
 
 This is an auto-clicker bot used to trade players and items on FIFA Ultimate Team's Web App.
 
+Click this image for a video demo that covers a few capabilities:
 [![FUTpuppeteer Demo](https://i.imgur.com/TsWZ6hb.jpg)](https://streamable.com/9616t)
 
 ## Key Features
