@@ -217,15 +217,17 @@ class Session(object):
                     break
                 else:
                     print('Your master password CANNOT be the same as your EA Password, EA Secret, or IMAP Password')
-            # We have to encode->hexlify->decode because encrypt creates bytes and keyring stores non-utf-8 string and we'll need to be able to convert later
+        # We have to encode->hexlify->decode because encrypt creates bytes and keyring stores non-utf-8 string and we'll need to be able to convert later
             imap_password = hexlify(encrypt(master_password, imap_password.encode('utf-8'))).decode()
             ea_password = hexlify(encrypt(master_password, ea_password.encode('utf-8'))).decode()
             ea_secret = hexlify(encrypt(master_password, ea_secret.encode('utf-8'))).decode()
+            new_config['user']['secure_passwords'] = True
+        else:
+            new_config['user']['secure_passwords'] = False
         # Store passwords and secrets in the keyring
         keyring.set_password('FUTpuppeteer_{}'.format(self.bot_number), 'imap_password', imap_password)
         keyring.set_password('FUTpuppeteer_{}'.format(self.bot_number), 'ea_password', ea_password)
         keyring.set_password('FUTpuppeteer_{}'.format(self.bot_number), 'ea_secret', ea_secret)
-        new_config['user']['secure_passwords'] = True
     # Write user info to config. Add option to re-enter user settings if needed
         new_config['user']['re-enter_user_settings'] = False
         with open(self.config_file, 'w') as update:

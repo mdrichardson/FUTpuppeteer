@@ -10,9 +10,11 @@ This is an auto-clicker bot used to trade players and items on FIFA Ultimate Tea
 * Can buy and sell players and some consumables using Buy It Now and/or auctions
 * Gathers SBC solutions, buys the players, and enters them into SBC solution, automatically
 * Can automatically manage transfer, watch, and unassigned lists
+* Can apply consumables to each individual member in any squad, optionally including subs and reserves (individual fitness, contracts, etc.)
 * Contains *numerous* strategies that can be customized easily
 * Desktop and AutoRemote (Android app) notifications
-* Stealth:  
+* Stealth:
+  * There was a big ban wave in early 2018. The commercial bots got hit. This one did not.
   * Uses randomized delays and off-center clicking to mimic human interactions
   * Uses randomized keep-alive
   * Customizeable maximum rate of user server requests
