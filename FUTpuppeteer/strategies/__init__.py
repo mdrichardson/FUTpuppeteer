@@ -185,7 +185,8 @@ def common_snipe(obj, name, snipe_criteria, strategy, price=0, max_item_buys=10,
                             sell_result = o.sell(item=item, start_price=bin_price - spread, bin_price=bin_price)
                             if sell_result == 'full':
                                 common_deal_with_full_transfer_list(o, strategy)
-                o.keep_alive(Global.micro_min)
+                        o.keep_alive(Global.micro_min)
+                        return bought
             elif snipe_criteria['player'] and item['resource_id'] == str(snipe_criteria['player']) and item['bid_status'] == 'won':
                 obj.send_to_transfer_list(item)
                 o.keep_alive(Global.micro_max)

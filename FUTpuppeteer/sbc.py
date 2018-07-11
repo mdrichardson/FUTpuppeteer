@@ -146,7 +146,7 @@ def solve_sbc(obj, futbin_link, futbin_multiplier=0.98, increase_each_round=True
                         slot.click()
                         sleep(Global.micro_min)
                         panel = obj.__get_class__('ui-layout-right', as_list=False)
-                        obj.__click_element__(panel.find_element_by_xpath("//*[contains(text(), 'Add Player')]"))
+                        obj.__get_xpath__("//*[contains(text(), 'Add Player')]").click()
                         sleep(Global.micro_min)
                         for solution_player in solution:
                             if solution_player[1] == position:

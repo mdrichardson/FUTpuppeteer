@@ -662,7 +662,7 @@ def search(obj, search_type='Players', player=None, item=None, rating=None, qual
         menu_container.find_element_by_xpath(".//*[contains(text(), '{}')]".format(search_type)).click()
         obj.location = 'search_{}'.format(search_type)
     search_panel = obj.__get_class__('filters-container-parent', as_list=False, timeout=Global.large_max)
-    button_bar = obj.__get_xpath__('/html/body/section/article/div[1]/div[2]/div/div[1]')
+    button_bar = obj.__get_class__('tabletButtons', as_list=False)
     search_prices = search_panel.find_element_by_class_name('searchPrices')
     # Ensure we didn't lose the name
     if not reset and player:

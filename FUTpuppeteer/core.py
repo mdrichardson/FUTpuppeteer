@@ -257,6 +257,8 @@ class Session(object):
     def __login__(self): # TODO: Figure out how to force login if it takes too long
         self.credits = 0
         self.driver.get(url)
+        print("Pausing so you can record\n\n\n\n\n\n\n\n")
+        sleep(10) # REMOVE AFTER VIDEO RECORDING
         # See if it auto-logs-in
         self.logged_in = False
         multi_log(self, 'Logging in...', level='info')
@@ -695,11 +697,11 @@ class Session(object):
             pass
         wait = WebDriverWait(self.driver, timeout)
 
-        return wait.until(ec.visibility_of_element_located((By.XPATH, xpath)))
+        return wait.until(ec.presence_of_element_located((By.XPATH, xpath)))
 
     def __get_class__(self, class_name, as_list=True, timeout=Global.large_min):
         wait = WebDriverWait(self.driver, timeout)
-        wait.until(ec.visibility_of_element_located((By.CLASS_NAME, class_name)))
+        wait.until(ec.presence_of_element_located((By.CLASS_NAME, class_name)))
         if as_list:
             return self.driver.find_elements_by_class_name(class_name)
         else:
@@ -769,7 +771,10 @@ class Session(object):
                 sleep(Global.micro_max)
                 try:
                     transfer_tile = self.__get_class__('transferListTile', as_list=False)
-                    self.current_tradepile_size = int(transfer_tile.find_element_by_class_name('count').text)
+                    try:
+                        self.current_tradepile_size = int(transfer_tile.find_element_by_class_name('count').text)
+                    except ValueError:
+                        pass
                 except (NoSuchElementException, TimeoutException):
                     sleep(Global.small_max)
                     try:
@@ -801,6 +806,8 @@ class Session(object):
                         self.current_tradepile_size = int(transfer_tile.find_element_by_class_name('count').text)
                     except (NoSuchElementException, StaleElementReferenceException):
                         pass
+                except ValueError:
+                    pass
             elif where == 'search' or ('search' in where and 'club' not in where):
                 self.location = 'xxx'
                 self.go_to('transfers')
