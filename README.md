@@ -4,6 +4,8 @@
 
 This is an auto-clicker bot used to trade players and items on FIFA Ultimate Team's Web App.
 
+[![FUTpuppeteer Demo](https://i.imgur.com/TsWZ6hb.jpg)](https://streamable.com/9616t)
+
 ## Key Features
 
 * Set-and-forget: runs *everything* automatically.
@@ -73,7 +75,7 @@ This is an auto-clicker bot used to trade players and items on FIFA Ultimate Tea
 ## To-Do
 
 - [X] Add readmes to each folder
-- [ ] Add gif that shows bot operate
+- [X] Add gif that shows bot operate
 - [ ] Clean up code, refactor as necessary
 - [ ] Test
 
@@ -83,6 +85,7 @@ This is an auto-clicker bot used to trade players and items on FIFA Ultimate Tea
 - [ ] Have it create databases from scratch
 - [ ] Have it auto-generate blank `bot*.yml` if `Session(bot_number=*)` doesn't exist
 - [ ] Store all settings in database, instead of yaml files
-- [ ] Completely refactor to use [oczkers' FUT api wrapper](https://github.com/futapi/fut) instead of Selenium
+- [ ] Completely refactor to use [oczkers' FUT API wrapper](https://github.com/futapi/fut) instead of Selenium
   * The increased likelihood of being caught is worth the increased speed, unless web app security increases significantly in the future
+    * Increased risk can be mitigated by frequently running a separate bot that logs in via Selenium (like this one) and compares all HTTP method parameters and cookies using BrowserProxyMob to make sure they match what oczker's API is sending
 - [ ] Write unit tests
