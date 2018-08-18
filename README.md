@@ -34,10 +34,10 @@ Click this image for a video demo that covers a few capabilities:
 
 ## Limitations
 
-* Runs on Selenium to mimic human interactions for better stealth. This requires higher CPU and RAM usage as well as additional delays due to page load times that you wouldn't see with something that uses EA's API directly.  
+* Runs on Selenium to mimic human interactions for better stealth. This requires higher CPU and RAM usage as well as additional delays due to page load times that you wouldn't see with something that uses EA's API directly.
   * Try changing `lag_multiplier` in `global.yml` to something larger if you get errors because your comupter or connection are slow.
 * FUT web app doesn't differentiate well between similar cards of the same player (e.g. Gold Diego Costa with a club change).
-  * In order to accurately get the price of the right card, all player card possibilities are grabbed from EA database and stored locally. Cards that appear in web app searches are then compared with those in the database and the closest match is returned. This is slightly slow and you will often be out-sniped by API-only bots.  
+  * In order to accurately get the price of the right card, all player card possibilities are grabbed from EA database and stored locally. Cards that appear in web app searches are then compared with those in the database and the closest match is returned. This is slightly slow and you will often be out-sniped by API-only bots.
   * When FIFA was first released, this wasn't an issue. But as more and more new card variations were released, this was the only way to solve this issue without direct API calls (which are less stealthy).
 * EA database must be manually updated. It takes ~10 minutes to complete. You can update it manually by executing `update_player_data()` in `database.py`.
 
@@ -77,8 +77,7 @@ Click this image for a video demo that covers a few capabilities:
 
 - [X] Add readmes to each folder
 - [X] Add gif that shows bot operate
-- [ ] Clean up code, refactor as necessary
-- [ ] Test
+- [X] Clean up code, refactor as necessary
 
 ## Needs to be done, but won't be unless I pick the project back up
 
@@ -90,3 +89,4 @@ Click this image for a video demo that covers a few capabilities:
   * The increased likelihood of being caught is worth the increased speed, unless web app security increases significantly in the future
     * Increased risk can be mitigated by frequently running a separate bot that logs in via Selenium (like this one) and compares all HTTP method parameters and cookies using BrowserProxyMob to make sure they match what oczker's API is sending
 - [ ] Write unit tests
+- [ ] This code is likely pretty inefficient. It could probably be made better by using more appropriate data structures and improving time and space complexity of some of the functions--especially the ones involving the player database and the ones that find sniping filters
