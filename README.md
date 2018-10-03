@@ -1,5 +1,7 @@
 # FUTpuppeteer FIFA 18 Ultimate Team Bot
 
+*__Note: This does not work with FIFA 19. You can probably adapt it to do so, but I haven't been developing this for several months.__*
+
 *__Note: This repo is not meant for the public. You're welcome to use it, but I am not providing support and you'll need to be semi-experienced with Python to get it running.__*
 
 This is an auto-clicker bot used to trade players and items on FIFA Ultimate Team's Web App.
