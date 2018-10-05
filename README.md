@@ -79,10 +79,10 @@ Click this image for a video demo that covers a few capabilities:
 
 - [X] Add readmes to each folder
 - [X] Add gif that shows bot operate
-- [X] Clean up code, refactor as necessary
 
 ## Needs to be done, but won't be unless I pick the project back up
 
+- [ ] Clean up code, refactor as necessary - After reading *Clean Code*, I realize the code could be *a lot* cleaner
 - [ ] Make install easier
 - [ ] Have it create databases from scratch
 - [ ] Have it auto-generate blank `bot*.yml` if `Session(bot_number=*)` doesn't exist
