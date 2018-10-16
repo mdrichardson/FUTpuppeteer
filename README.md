@@ -2,7 +2,37 @@
 
 *__Note: This does not work with FIFA 19. You can probably adapt it to do so, but I haven't been developing this for several months.__*
 
+## FIFA 19 FAQ
+
+**Q: Will you be making a bot for FIFA 19?**
+
+Not likely. You'll see updates here if I ever do, but I've got a lot more projects to work on before I can move onto this again.
+
+**Q: How do I avoid detection?**
+
+As far as I can tell, EA only monitors for:
+
+* mismatched HTTP request headers
+* PinEvents for HTTP requests that don't fire when they should
+* Too many requests (HTTP or clicks)
+* Too fast of requests (HTTP or clicks)
+* Being too slow to respond to CAPTCHA
+* Running for many hours in a day 
+* Running for too long without a break
+
+**Q: Should I make an auto-clicker bot myself (with Selenium)**
+
+If I were to do it over again, I'd just build one off of [oczkers' FUT API wrapper](https://github.com/futapi/fut) instead of Selenium.
+
+There aren't any HTML elements the bot can pull for card IDs. This becomes a massive slow-down once special cards are released (TOTS, POTW, etc) and a single player has 5-6 cards.
+
+***
+
 *__Note: This repo is not meant for the public. You're welcome to use it, but I am not providing support and you'll need to be semi-experienced with Python to get it running.__*
+
+***
+
+## FUTPuppeteer for FIFA 18
 
 This is an auto-clicker bot used to trade players and items on FIFA Ultimate Team's Web App.
 
